@@ -66,8 +66,18 @@ Namespace Helpers
             End Set
         End Property
 
+        Public Sub New()
+
+        End Sub
+
         Public Sub New(list As List(Of T))
             Me.List = list
+        End Sub
+
+        Public Sub ExportListToExcel(list As List(Of T))
+            Dim excelHelper As New ExcelHelper(Of T)(list)
+            Me.List = list
+            Me.ExportListToExcel()
         End Sub
 
         Public Sub ExportListToExcel()
@@ -129,7 +139,14 @@ Namespace Helpers
             Next
 
             Dim uTime As Long = Utils.GenerateUnixTime()
-            FilePath = $"C:\ImageExcel\{uTime}_data.xlsx"
+
+            Dim folderPath = $"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\ImageExcel"
+
+            If Not Directory.Exists(folderPath) Then
+                Directory.CreateDirectory(folderPath)
+            End If
+
+            FilePath = $"{folderPath}\{uTime}_data.xlsx"
             ' Save the workbook and close Excel
             workbook.SaveAs(FilePath)
             workbook.Close()

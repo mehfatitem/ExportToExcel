@@ -1,7 +1,4 @@
-﻿Imports System.Drawing
-Imports System.Windows.Media.Imaging
-
-Namespace Models
+﻿Namespace Models
     Public Class FaceDetect
 
         Private _id As Integer
@@ -46,4 +43,3 @@ Namespace Models
         End Property
     End Class
 End Namespace
-

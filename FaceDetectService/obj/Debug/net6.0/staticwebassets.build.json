@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "iQtsv3MslWR/Ed7cPrx2p5BJvyTvOI/FMUkhv5NCInk=",
+  "Source": "FaceDetectService",
+  "BasePath": "_content/FaceDetectService",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

@@ -1,4 +1,6 @@
-﻿Namespace Helpers
+﻿Imports System.Windows.Input
+
+Namespace Helpers
     Public Class MyUtils
 
         Public Sub New()
@@ -27,13 +29,22 @@
         Public Function UnixTimeToDateTime(unixTime As Long)
             Dim dateTimeOffset As DateTimeOffset = DateTimeOffset.FromUnixTimeSeconds(unixTime)
 
+
+            ' Define the GMT+3 offset (3 hours ahead of UTC)
+            Dim gmtPlus3Offset As New TimeSpan(3, 0, 0)
+
+            Dim convertedTime As DateTimeOffset = dateTimeOffset.ToOffset(gmtPlus3Offset)
+
+
+            ' Apply 
+
             ' Get day, month, year, hour, minute, and second
-            Dim day As String = dateTimeOffset.Day.ToString().PadLeft(2, "0"c)
-            Dim month As String = dateTimeOffset.Month.ToString().PadLeft(2, "0"c)
-            Dim year As String = dateTimeOffset.Year
-            Dim hour As String = (dateTimeOffset.Hour + 3).ToString().PadLeft(2, "0"c)
-            Dim minute As String = dateTimeOffset.Minute.ToString().PadLeft(2, "0"c)
-            Dim second As String = dateTimeOffset.Second.ToString().PadLeft(2, "0"c)
+            Dim day As String = convertedTime.Day.ToString().PadLeft(2, "0"c)
+            Dim month As String = convertedTime.Month.ToString().PadLeft(2, "0"c)
+            Dim year As String = convertedTime.Year
+            Dim hour As String = convertedTime.Hour.ToString().PadLeft(2, "0"c)
+            Dim minute As String = convertedTime.Minute.ToString().PadLeft(2, "0"c)
+            Dim second As String = convertedTime.Second.ToString().PadLeft(2, "0"c)
 
             ' Display the components
 
